@@ -1,7 +1,8 @@
 /**
 *  Course: CMPS 3013 - Adv. Structures and Algorithms
 *
-*  Purpose: Program to take in a file of integers and insert them into a BST
+*  Purpose: Program to take in a file of integers using command line parameters
+*  and insert them into a BST
 *
 *  @author Tyler Roop
 *  @version 1.1 09/16/19
