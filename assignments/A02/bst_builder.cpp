@@ -2,7 +2,9 @@
 *  Course: CMPS 3013 - Adv. Structures and Algorithms
 *
 *  Purpose: Program to take in a file of integers using command line parameters
-*  and insert them into a BST
+*  and insert them into a BST. The program first inserts the data into an array, 
+*  sorts the array, then uses a function to insert the data from the array into
+*  a balanced binary search tree.
 *
 *  @author Tyler Roop
 *  @version 1.1 09/16/19
