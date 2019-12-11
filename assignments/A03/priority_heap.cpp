@@ -1,20 +1,27 @@
-/**
- * Name: Tyler Roop
- * Date: 12/8/19
- * Course: CMPS 3013
- * Program: A03
- * Description:
- *      This program takes in various pieces of data from an
- *      input file and uses them to creat buckets of
- *      maxheaps. The animal name and priority are calculated
- *      from inputs. A command line argument is used to 
- *      determine the number of buckets. The program then
- *      prints off the top five animals from each heap. I
- *      couldn't get the json files to work correctly, so I
- *      modified the data file slightly to help with input.
- *      All fields should be the same
- *       
- */
+///////////////////////////////////////////////////////////////////////////////
+//
+// Date:             10 December 2019
+// Title:            Program 2 - Priority Queues
+// Semester:         Fall 2019
+// Course:           CMPS 3013 
+// Assignment:       A03
+// Author:           Tyler Roop
+// Email:            tarrox16@yahoo.com
+// Files:            priority_heap.cpp
+//					 animals.json
+// Description:
+//       This program takes in various pieces of data from an
+//       input file and uses them to creat buckets of
+//       maxheaps.The animal name and priority are calculated
+//       from inputs. A two digit command line argument is used to
+//       determine the number of buckets. For numbers less than 10, a 0
+//		 is needed in the tens place. The program then
+//       prints off the top five animals from each heap.I
+//       couldn't get the json files to work correctly, so I
+//       modified the data file slightly to help with input.
+//       All fields should be the same
+//
+///////////////////////////////////////////////////////////////////////////////
 
 #include <string>
 #include <iostream>
@@ -40,19 +47,19 @@ public:
 
 	void Heapify(int i);
 
-  //Method that returns the parent of entered index
+	//Method that returns the parent of entered index
 	int parent(int i)
 	{
 		return (i / 2);
 	}
 
-  // Method that returns the left child of entered index
+	// Method that returns the left child of entered index
 	int left(int i)
 	{
 		return 2 * i;
 	}
 
-  // Method that returns the right child of entered index
+	// Method that returns the right child of entered index
 	int right(int i)
 	{
 		return (2 * i + 1);
@@ -222,6 +229,7 @@ void ReadOut(string Output, Heap** Buckets, int NumberOfBuckets)
 	pair <string, double> Printed;
 	ofstream Outfile;
 	Outfile.open(Output);
+	Outfile << "Tyler Roop\n\n";
 	for (int i = 0; i < NumberOfBuckets; i++)
 	{
 		Outfile << "Heap " << i << '\n';
@@ -234,10 +242,12 @@ void ReadOut(string Output, Heap** Buckets, int NumberOfBuckets)
 	Outfile.close();
 };
 
-int main(int argv, char** argv)
+int main(int argc, char * argv[])
 {
-
-	int NumberOfBuckets = argv[1];
+	int Tens = argv[1][0] - '0';
+	int Ones = argv[1][2] - '0';
+	Tens *= 10;
+	int NumberOfBuckets = Tens + Ones;
 
 	Heap** Buckets = new Heap*[NumberOfBuckets];
 
@@ -245,7 +255,7 @@ int main(int argv, char** argv)
 		Buckets[i] = new Heap(1000);
 	}
 
-	ReadIn(animals.json, Buckets, NumberOfBuckets);
+	ReadIn("animals.json", Buckets, NumberOfBuckets);
 	ReadOut("output.txt", Buckets, NumberOfBuckets);
 
 }
