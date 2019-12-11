@@ -90,11 +90,11 @@ private:
 const static double EarthRadiusKm = 6372.8;
 
 // method that swaps two index values in a heap
-void swap(pair<string, double> *x, pair<string, double> *y)
+void swap(pair<string, double> *t, pair<string, double> *r)
 {
-	pair<string, double> temp = *x;
-	*x = *y;
-	*y = temp;
+	pair<string, double> temp = *t;
+	*t = *r;
+	*r = temp;
 };
 
 // method that initializes a heap
